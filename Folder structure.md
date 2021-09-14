@@ -1,0 +1,127 @@
+# Beginner: Folder Structure
+
+Aims:
+
+* Understand where packages are usually stored when downloading from sudo apt-get 
+* Understand why a workspace is used and how to create one
+* Understand how to download packages/repositories from github 
+
+## Concepts to Understand
+
+On the left hand side of your Linux desktop, you will see a file cabinet icon. Clicking on it will show you the folders of the system - if you're used to navigating Windows files then you may be familiar with the set up. What is different in Linux is the file structure of the operating system.
+
+So far, we have been downloading packages from the internet using the **sudo apt install** command. But where have they been stored? If you look into the downloads folder you will not see them there. If you click on ***Other Locations*** on the left hand side and search for the packages you donwloaded earlier (such as husky_desktop) you will find that there are two main where they are stored:
+
+The path that they are stored can be seen as follows:
+
+ie it is at the system ros directory - you shouldn't be editing packages here.
+
+Ultimately, a simulated robot is a bunch of packages - so how should you take a package and edit/modify it? To do this you need to create your own Catkin Workspace. 
+
+**Catkin Workspace:** a directory (or folder) where you can modify existing catkin packages or create new ones and connect packages together. It will contain at least three main subdirectories (sub-folders): build, devel and src subdirectories.
+
+*We will be using the words **folders** and **directories** interchangeably*
+
+**Catkin Package:** building up from our definition of a package from the previous tutorial, a catkin package is a folder that at least has a "CMakeLists.txt" file and a "package.xml" file. 
+
+*We will be using the word **catkin package** and **package** interchangeably*
+
+**Note: you can have multiple catkin packages in a single catkin workspace.**
+
+**Repository:** *in the context of these tutorials* a folder containing more folders and (mainly) other packages.
+
+You build your workspace in three parts: 
+1) Creating catkin workspace 
+2) Adding the packages you wish (or creating them) 
+3) Building the workspace
+
+## 1) Creating a Catkin Workspace 
+
+Open a terminal and enter the following commands:
+```
+mkdir ~/workspace
+```
+*The mkdir command is to create a folder, the ~ sign is a shortcut to the home folder in linux and therefore the /workspace is the path you are wanting to create.*
+
+![mkdir.png](mkdir.png)
+
+
+If you open your home folder you should be able to see a folder titled "workspace".
+
+Enter the following command:
+```
+mkdir ~/workspace/src
+```
+*The **~/** at the beginning of the path represents the home folder.*
+
+If you click into the workspace folder you will now see that you have created a folder titled "src".
+
+Enter the following two commands:
+```
+cd ~/workspace/src
+catkin_init_workspace
+```
+
+*The cd command stands for change directory. In other words it is pointing the terminal towards the folder titled "src". The command catkin_init_workspace initialises the workspaces and adds a CMake.txt file.*
+
+![catkin_init.png](catkin_init.png)
+
+At this point, you will be able to see that two more folders have appeared in your Workspace folder: the build and devel folders.
+
+## 2) Adding your packages
+
+### Downloading from Github
+
+Github is a common platform for software developers. It allows for one to upload and share code easily. Many developers and institutions use github to share their work and it is highly likely that this will be the place whereby you will be downloading robots and robot packages. Usually, the University of Manchester 
+
+To do this, you will need to install git tools first on your linux. Enter the following commands:
+```
+sudo apt-get install git
+```
+Next we find either a repository (folder with a bunch of packages) or generally packages that you want to download and edit. In this case we have idenitified the jackal robot repository at the following website address: 
+
+https://github.com/jackal/jackal
+
+If you click in each folder - such as the jackal_control - you will see that they have a CMakeLists.txt file and a package.xml. This means that the jackal_control folder is a package as it has the .xml and CMakeLists file.
+
+If we wish to copy the whole jackal robot repository (ie all the packages found at that address) and edit it, then we need to take it into the src folder of the catkin workspace. We will use the same workspace created above. Open a new terminal and enter the following commands:
+
+```
+cd ~/workspace/src
+git clone https://github.com/jackal/jackal.git
+```
+*What we have done here is taken the terminal to the src folder of the workspace we made and used the **git clone** command and entered the website address of the github page and added **.git** at the end*
+
+Let's add another repository as well:
+```
+git clone https://github.com/jackal/jackal_simulator.git
+```
+
+At this point, if you look in your files, you would realise that the folders are all in the repository named "jackal" and "jackal_simulator" stored in the source folder of the workspace.
+
+
+## 3) Building the workspace
+
+Now that you have added the packages you wanted (or made your own packages) you need to build the workspace. 
+
+From the same terminal, enter the following command:
+
+```
+cd ..
+catkin_make
+```
+*The **cd ..** command is used to return the terminal to the folder that is the level above; ie the terminal is now pointing to the path **~/workspace** where before we entered the command it was at the path **~/workspace/src**. The command **catkin_build** is sometimes used to build the workspace - the University of Manchester ROS repositories also use catkin_build now.*
+
+
+
+## Tutorial Exercise
+
+1) Create a new workspace called "mallard_ws" 
+
+2) Copy the University of Manchester Mallard repository and store in in the appropriate area of your workspace
+
+*Hint: the University of Manchester Mallard repository can be found at the following web address:*
+
+*https://github.com/EEEManchester/mallard_sim/tree/hangyeol*
+
+3) Follow the instructions on the webpage to install catkin tools and to build the workspace.
