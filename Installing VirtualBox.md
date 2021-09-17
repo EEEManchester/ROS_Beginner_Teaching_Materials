@@ -99,8 +99,8 @@ bottom of the page.
 
 ## Fixing the Small Screen Issue
 To fix this issue and improve usability in many other ways you need to install
-VirtualBox Guest Additions. This is collection of drivers for VirtualBox. To do so whilst the VM is running, go to `Devices -> Install
-Guest Additions`. You
+VirtualBox Guest Additions. This is collection of drivers for VirtualBox. To do so whilst
+the VM is running, go to `Devices -> Insert Guest Additions`. You
 will be prompted to download Guest Additions.
 
 Once guest additions is downloaded it should automatically be mounted as a CD-Rom on your
