@@ -8,7 +8,12 @@ This is a guide for anyone who has to run an Ubuntu Virtual Machine (VM)) in
 [VirtualBox](https://www.virtualbox.org/).
 It is recommended that if you have a choice of which virtual machine to use, that you use
 VMPlayer (Windows, Linux) or VMFusion (Mac *Intel only*). Instructions on how to use
-VMPlayer can be found in [1. Installing Linux](1.%20Installing%20Linux.md)
+VMPlayer can be found in [1. Installing Linux](1.%20Installing%20Linux.md).
+
+Also please
+make sure that you have **enabled virtualisation in your BIOS**. Guidance on how to do so can
+be found in [1. Installing Linux](1.%20Installing%20Linux.md). If you have an Intel Mac
+you can ignore this.
 
 ## Download and Install VirtualBox
 
